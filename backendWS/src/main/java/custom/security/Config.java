@@ -34,10 +34,10 @@ public class Config {
                                 auhtz
                                         .requestMatchers(HttpMethod.POST, "/entity/login", "/entity/register","/movements","/movements/receive-and-send-back").permitAll()
                                         .requestMatchers(HttpMethod.GET,  "/vehicle/{id}","/checking/{id}").permitAll()
-                                        .requestMatchers(HttpMethod.GET, "/brands", "/processors", "/screens", "/proc-suppliers", "/laptops","/stores","/storages","/rams","/places","/utilisateurs","/movements","/v-stocks","/v-stock-transferred-by-point-of-sales","/v-laptop-sents","/movement-details","/v-laptop-returneds","/v-stock-by-salepoints","/v-sales-per-month-alls","/v-sales-per-month-alls/pdf","/v-sales-per-month-cross-sellers","/v-sales-per-month-cross-sellers/pdf","/v-profit-per-month-alls","/v-profit-per-month-alls/pdf","/v-sales-per-salepoints").permitAll()
-                                        .requestMatchers(HttpMethod.DELETE, "/driver/logout", "/brands/{id}", "/laptops/{id}","/processors/{id}","/stores/{id}","/screens/{id}","/places/{id}","/utilisateurs/{id}").permitAll()
-                                        .requestMatchers(HttpMethod.PUT, "/brands/{id}", "/laptops/{id}","/processors/{id}","/stores/{id}","/screens/{id}","/places/{id}","/utilisateurs/{id}").permitAll()
-                                        .requestMatchers(HttpMethod.POST, "/brands", "/laptops","/processors","/screens","/stores","/places","/utilisateurs","/movements/confirm-receive").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "/brands", "/processors", "/screens", "/proc-suppliers", "/laptops","/stores","/storages","/rams","/places","/utilisateurs","/movements","/v-stocks","/v-stock-transferred-by-point-of-sales","/v-laptop-sents","/movement-details","/v-laptop-returneds","/v-stock-by-salepoints","/v-sales-per-month-alls","/v-sales-per-month-alls/pdf","/v-sales-per-month-cross-sellers","/v-sales-per-month-cross-sellers/pdf","/v-profit-per-month-alls","/v-profit-per-month-alls/pdf","/v-sales-per-salepoints","/commissions").permitAll()
+                                        .requestMatchers(HttpMethod.DELETE, "/driver/logout", "/brands/{id}", "/laptops/{id}","/processors/{id}","/stores/{id}","/screens/{id}","/places/{id}","/utilisateurs/{id}","/commissions/{id}").permitAll()
+                                        .requestMatchers(HttpMethod.PUT, "/brands/{id}", "/laptops/{id}","/processors/{id}","/stores/{id}","/screens/{id}","/places/{id}","/utilisateurs/{id}","/commissions/{id}").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/brands", "/laptops","/processors","/screens","/stores","/places","/utilisateurs","/movements/confirm-receive","/commissions").permitAll()
                 ).httpBasic();
         return httpSecurity.build();
     }
