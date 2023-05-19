@@ -24,7 +24,8 @@ export class Crud extends Component {
             pagination,
             searchFormData,
             pdfButton,
-            details
+            details,
+            customEvent
         } = this.props;
         document.getElementById("page-description").innerHTML = page_description;
         const updateEntity = (id) => {
@@ -45,23 +46,27 @@ export class Crud extends Component {
                         console.log(obj)
                         const finalObj = convertToNewObject(obj)
                         delete finalObj.id
-                        axios.put(`${BASE_URL}/${endpoint}/${obj.id}`, finalObj, CONFIG).then((response) => {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Operation successful',
-                                    text: endpoint + ' has been modified',
-                                }).then(() => {
-                                    window.location.href = endpoint + "s"
-                                })
-                            }
-                        ).catch((error) => {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Sorry, an error has occured',
-                                    text: error.response.data.code + ': ' + error.response.data.message,
-                                })
-                            }
-                        )
+                        if (customEvent !== undefined && customEvent.update !== undefined) {
+                            customEvent.update(finalObj,id)
+                        } else {
+                            axios.put(`${BASE_URL}/${endpoint}/${obj.id}`, finalObj, CONFIG).then((response) => {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Operation successful',
+                                        text: endpoint + ' has been modified',
+                                    }).then(() => {
+                                        window.location.reload()
+                                    })
+                                }
+                            ).catch((error) => {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Sorry, an error has occured',
+                                        text: error.response.data.code + ': ' + error.response.data.message,
+                                    })
+                                }
+                            )
+                        }
                     }
                 }
             )
@@ -106,12 +111,13 @@ export class Crud extends Component {
                 console.log("Elements: ", inputTypes[index].mother)
                 if (inputTypes[index].name === "select") {
                     htmlString += `<label>${headers[index]}</label><select class="form-select mb-3 myform" data-choices>`;
+                    htmlString += `<option value="" selected>Choose here</option>`;
                     for (let i = 0; i < inputTypes[index].mother.length; i++) {
-                        htmlString += `<option value="${inputTypes[index].mother[i].id}" ${insert === false && value === inputTypes[index].mother[i].name ? "selected" : ""}>${inputTypes[index].mother[i].name}</option>`;
+                        htmlString += `<option value="${inputTypes[index].mother[i].id}" ${insert === false && value === inputTypes[index].mother[i].name ? "selected" : ""}>${inputTypes[index].mother[i].name === undefined ? inputTypes[index].mother[i].lastname + " " + (inputTypes[index].mother[i].firstname===null?"": inputTypes[index].mother[i].firstname) : inputTypes[index].mother[i].name}</option>`;
                     }
                     htmlString += `</select>`;
                 } else {
-                    htmlString += `<p style="${headers[index].toLowerCase() === "id" ? "display:none" : ""}"><label>${headers[index]}</label><input type="${inputTypes[index].name}" value="${value}" class="form-control myform"/></p>`;
+                    htmlString += `<p style="${headers[index].toLowerCase() === "id" ? "display:none" : ""}"><label>${headers[index]}</label><input step="${inputTypes[index].step}" type="${inputTypes[index].name}" value="${value}" class="form-control myform"/></p>`;
                 }
                 htmlString += `<br/>`;
             });
@@ -134,7 +140,7 @@ export class Crud extends Component {
                                     endpoint + " has been deleted",
                                     'success'
                                 ).then(() => {
-                                        window.location.href = endpoint + "s"
+                                        window.location.reload()
                                     }
                                 )
                             }
@@ -179,30 +185,33 @@ export class Crud extends Component {
                     const formControl = document.getElementsByClassName("myform");
 
                     const obj = getObj(formControl, true);
-
-                    axios.post(`${BASE_URL}/${endpoint}`, convertToNewObject(obj), CONFIG).then((response) => {
-                            console.log(response);
-                            Swal.fire({
-                                icon: "success",
-                                title: endpoint + " created !",
-                                showConfirmButton: false,
-                                timer: 2000
-                            }).then(
-                                () => {
-                                    window.location.href = endpoint + "s"
-                                }
-                            )
-                            // refresh the page
-                        }
-                    ).catch((error) => {
-                            console.log(error);
-                            Swal.fire({
-                                icon: "error",
-                                title: "An error has occurred",
-                                text: error,
-                            })
-                        }
-                    )
+                    if (customEvent !== undefined && customEvent.create !== undefined) {
+                        customEvent.create(convertToNewObject(obj));
+                    } else {
+                        axios.post(`${BASE_URL}/${endpoint}`, convertToNewObject(obj), CONFIG).then((response) => {
+                                console.log(response);
+                                Swal.fire({
+                                    icon: "success",
+                                    title: endpoint + " created !",
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                }).then(
+                                    () => {
+                                        window.location.reload()
+                                    }
+                                )
+                                // refresh the page
+                            }
+                        ).catch((error) => {
+                                console.log(error);
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "An error has occurred",
+                                    text: error,
+                                })
+                            }
+                        )
+                    }
                 }
             })
         }
@@ -221,13 +230,15 @@ export class Crud extends Component {
                                     pagination={pagination === undefined ? [] : pagination}/>
                     </div>
                     <div className="col-md-12">
-                        <TableChild details={details} userDefinedButton={userDefinedButton} titre={tableTitle} headers={headers}
+                        <TableChild details={details} userDefinedButton={userDefinedButton} titre={tableTitle}
+                                    headers={headers}
                                     rows={rows === undefined ? [] : rows}
-                                    buttons={crud === true ? buttons : undefined} endpoint={endpoint} pdfButton={pdfButton}/>
+                                    buttons={crud === true ? buttons : undefined} endpoint={endpoint}
+                                    pdfButton={pdfButton}/>
                     </div>
                     <div className="col-md-12" style={{display: "flex", justifyContent: "center"}}>
                         {
-                            pagination!==undefined && <Pagination endpoint={endpoint} info={pagination}/>
+                            pagination !== undefined && <Pagination endpoint={endpoint} info={pagination}/>
                         }
                     </div>
                 </div>

@@ -6,6 +6,7 @@ export const Inter = () => {
     const navigate = useNavigate();
     const query = new URLSearchParams(location.search);
     const myParam = query.get('role');
+    sessionStorage.removeItem("entity_id")
     useEffect(() => {
         myParam === "50" ? navigate("login/admin") : navigate("login/user")
         // window.location.href="login"

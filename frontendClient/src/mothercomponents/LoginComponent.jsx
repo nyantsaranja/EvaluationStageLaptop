@@ -17,11 +17,34 @@ export const LoginComponent = () => {
         axios.post(loginUrl, obj).then((response) => {
                 console.log(response.data)
                 sessionStorage.setItem("entity_id", response.data.data.entity.id)
+                sessionStorage.setItem("role", response.data.data.entity.permission === 0 ? "pos" : "sto")
                 localStorage.setItem("token", response.data.data.token)
-                if (response.data.data.entity.permission === 0) {
-                    window.location.href="homepage"
-                }else{
-                    window.location.href="homepage"
+                if (role === "admin" && response.data.data.entity.permission === 0) {
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Désolé...',
+                            text: "Vous n'êtes pas autorisé à vous connecter en tant que magasin",
+                        }
+                    ).then((result) => {
+                            window.location.href = "/"
+                        }
+                    )
+                } else if (role === "user" && response.data.data.entity.permission === 50) {
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Désolé...',
+                            text: "Vous n'êtes pas autorisé à vous connecter en tant que point de vente",
+                        }
+                    ).then((result) => {
+                            window.location.href = "/"
+                        }
+                    )
+                } else {
+                    if (response.data.data.entity.permission === 0) {
+                        window.location.href = "receipts"
+                    } else {
+                        window.location.href = "laptops"
+                    }
                 }
             }
         ).catch((error) => {

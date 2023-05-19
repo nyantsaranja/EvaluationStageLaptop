@@ -9,11 +9,11 @@
             name="description"
             content="Web site created using create-react-app"
     />
-    <title>Auction</title>
+    <title>Laptop</title>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="//assets/favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon"/>
 
 
     <!-- Libs CSS -->
@@ -159,42 +159,91 @@
                     </a>
                     <div class="collapse show" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="categories" class="nav-link ">
-                                    Categories
+                            <li class="nav-item sto">
+                                <a href="/laptops" class="nav-link ">
+                                    Laptops
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="settings" class="nav-link ">
-                                    Settings
+                            <li class="nav-item sto">
+                                <a href="/brands" class="nav-link ">
+                                    Brands
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="refund_demands" class="nav-link ">
-                                    Refunds demands
+                            <li class="nav-item sto">
+                                <a href="/processors" class="nav-link ">
+                                    Processors
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="refunds" class="nav-link ">
-                                    Refunds
+                            <li class="nav-item sto">
+                                <a href="/points-of-sales" class="nav-link ">
+                                    Points of sale
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="best_users" class="nav-link ">
-                                    Best users
+                            <li class="nav-item sto">
+                                <a href="/screens" class="nav-link ">
+                                    Screens
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="best_sellers" class="nav-link ">
-                                    Best sellers
+                            <li class="nav-item sto">
+                                <a href="/places" class="nav-link ">
+                                    Places
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="incomes" class="nav-link ">
-                                    Incomes per month
+                            <li class="nav-item sto">
+                                <a href="/users" class="nav-link ">
+                                    Users
                                 </a>
                             </li>
-
+                            <li class="nav-item sto">
+                                <a href="/stock" class="nav-link ">
+                                    Stock
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/add-laptop-to-stock" class="nav-link ">
+                                    Purchase new laptops
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/sent-laptop-by-salepoints" class="nav-link ">
+                                    Transferred laptops
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/returned-laptops" class="nav-link ">
+                                    Returned laptops
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/sales-per-month" class="nav-link ">
+                                    Sales per month
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/sales-per-month-per-salepoint" class="nav-link ">
+                                    Sales per month per salepoint
+                                </a>
+                            </li>
+                            <li class="nav-item sto">
+                                <a href="/profit-per-month" class="nav-link ">
+                                    Profit per month
+                                </a>
+                            </li>
+                            <li class="nav-item pos">
+                                <a href="/receipts" class="nav-link ">
+                                    Receipts
+                                </a>
+                            </li>
+                            <li class="nav-item pos">
+                                <a href="/salepoint-stock" class="nav-link ">
+                                    Stock
+                                </a>
+                            </li>
+                            <li class="nav-item pos">
+                                <a href="/sales-per-sale-point" class="nav-link ">
+                                    Sales per sale point
+                                </a>
+                            </li>
 
                         </ul>
                     </div>
@@ -321,39 +370,89 @@
                         <li class="dropdown-header d-none d-md-block">
                             <h6 class="text-uppercase mb-0">Dashboards</h6>
                         </li>
-                        <li>
-                            <a href="categories" class="dropdown-item active">
-                                Categories
+                        <li class="sto">
+                            <a href="/laptops" class="dropdown-item active">
+                                Laptops
                             </a>
                         </li>
-                        <li>
-                            <a href="settings" class="dropdown-item ">
-                                Settings
+                        <li class="sto">
+                            <a href="/brands" class="dropdown-item ">
+                                Brands
                             </a>
                         </li>
-                        <li>
-                            <a href="refund_demands" class="dropdown-item ">
-                                Refunds demands
+                        <li class="sto">
+                            <a href="/processors" class="dropdown-item ">
+                                Processors
                             </a>
                         </li>
-                        <li>
-                            <a href="refunds" class="dropdown-item ">
-                                Refunds
+                        <li class="sto">
+                            <a href="/points-of-sales" class="dropdown-item ">
+                                Points of sale
                             </a>
                         </li>
-                        <li>
-                            <a href="best_users" class="dropdown-item ">
-                                Best users
+                        <li class="sto">
+                            <a href="/screens" class="dropdown-item ">
+                                Screens
                             </a>
                         </li>
-                        <li>
-                            <a href="best_sellers" class="dropdown-item ">
-                               Best sellers
+                        <li class="sto">
+                            <a href="/places" class="dropdown-item ">
+                               Places
                             </a>
                         </li>
-                        <li>
-                            <a href="incomes" class="dropdown-item ">
-                                Incomes per month
+                        <li class="sto">
+                            <a href="/users" class="dropdown-item ">
+                                Users
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/stock" class="dropdown-item ">
+                                Stock
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/add-laptop-to-stock" class="dropdown-item ">
+                                Purchase new laptops
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/sent-laptop-by-salepoints" class="dropdown-item ">
+                                Transferred laptops
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/returned-laptops" class="dropdown-item ">
+                                Returned laptops
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/sales-per-month" class="dropdown-item ">
+                                Sales per month
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/sales-per-month-per-salepoint" class="dropdown-item ">
+                                Sales per month per salepoint
+                            </a>
+                        </li>
+                        <li class="sto">
+                            <a href="/profit-per-month" class="dropdown-item ">
+                                Profit per month
+                            </a>
+                        </li>
+                        <li class="pos">
+                            <a href="/receipts" class="dropdown-item ">
+                                Receipts
+                            </a>
+                        </li>
+                        <li class="pos">
+                            <a href="/salepoint-stock" class="dropdown-item ">
+                                Stock
+                            </a>
+                        </li>
+                        <li class="pos">
+                            <a href="/sales-per-sale-point" class="dropdown-item ">
+                                Sales per sale point
                             </a>
                         </li>
                     </ul>
@@ -515,10 +614,22 @@
 
 
 <script>
-    if (sessionStorage.getItem("person_id") === null || sessionStorage.getItem("person_id") === "" || sessionStorage.getItem("person_id") === undefined) {
+    if (sessionStorage.getItem("entity_id") === null || sessionStorage.getItem("entity_id") === "" || sessionStorage.getItem("entity_id") === undefined) {
         const myheaders = document.getElementsByClassName("myheader");
         for (let i = 0; i < myheaders.length; i++) {
             myheaders[i].style.display = "none";
+        }
+    }
+    if(sessionStorage.getItem("role")==="sto"){
+        const stos=document.getElementsByClassName("pos")
+        for(let i=0;i<stos.length;i++){
+            stos[i].style.display="none"
+        }
+    }
+    if(sessionStorage.getItem("role")==="pos"){
+        const pos=document.getElementsByClassName("sto")
+        for(let i=0;i<pos.length;i++){
+            pos[i].style.display="none"
         }
     }
     $(document).ready(function () {

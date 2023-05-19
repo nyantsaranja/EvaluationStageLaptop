@@ -24,3 +24,7 @@ export function convertToNewObjectBySplitting(obj) {
     }
     return newObj;
 }
+
+export function getSession(name) {
+    return sessionStorage.getItem(name)
+}
