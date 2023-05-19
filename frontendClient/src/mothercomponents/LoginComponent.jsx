@@ -19,6 +19,7 @@ export const LoginComponent = () => {
                 sessionStorage.setItem("entity_id", response.data.data.entity.id)
                 sessionStorage.setItem("role", response.data.data.entity.permission === 0 ? "pos" : "sto")
                 localStorage.setItem("token", response.data.data.token)
+                sessionStorage.setItem("entity_name",response.data.data.entity.name)
                 if (role === "admin" && response.data.data.entity.permission === 0) {
                     Swal.fire({
                             icon: 'error',

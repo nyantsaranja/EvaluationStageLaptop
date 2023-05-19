@@ -155,7 +155,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
                        aria-expanded="true" aria-controls="sidebarDashboards">
-                        <i class="fe fe-home"></i> Dashboards
+                        <i class="fe fe-home"></i> Dashboards <small id="usersmall"></small>
                     </a>
                     <div class="collapse show" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
@@ -632,6 +632,7 @@
             pos[i].style.display="none"
         }
     }
+    document.getElementById("usersmall").innerText=("-"+sessionStorage.getItem("entity_name"))+(sessionStorage.getItem("role")==="sto"?" (Store)":" (Point of sale)")
     $(document).ready(function () {
         $('#myDataTable').DataTable();
     });

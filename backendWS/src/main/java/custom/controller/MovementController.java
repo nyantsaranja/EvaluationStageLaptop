@@ -32,7 +32,7 @@ public class MovementController extends CrudController<Movement, MovementService
     }
 
     @PostMapping("")
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public ResponseEntity<?> create(@RequestBody Movement obj) throws Exception {
         Movement created = service.create(obj);
         List<MovementDetails> details = obj.getMovementDetails();
@@ -46,7 +46,7 @@ public class MovementController extends CrudController<Movement, MovementService
     }
 
     @PostMapping("/receive-and-send-back")
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public ResponseEntity<?> receiveAndSendBack(@RequestBody ReceiptSendBack obj) throws Exception {
         Movement current = service.findById(obj.getMovementId());
         Movement receivedObj = obj.getFinalObjReceived();
@@ -100,7 +100,7 @@ public class MovementController extends CrudController<Movement, MovementService
     }
 
     @PostMapping("/confirm-receive")
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public ResponseEntity<?> confirmReceive(@RequestBody Movement obj) throws Exception {
         Movement former = service.findById(obj.getId());
         former.setType(7);
